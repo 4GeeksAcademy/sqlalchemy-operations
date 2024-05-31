@@ -22,12 +22,12 @@
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or the host.
-	"forwardPorts": [5432, 3000],
+	"forwardPorts": [5432],
 
 	"onCreateCommand": "cp -n .env.example .env && pipenv install",
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pipenv install && bash database.sh && python docs/assets/welcome.py",
+	"postCreateCommand": "pipenv install && bash database.sh && python docs/welcome.py",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
