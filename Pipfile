@@ -12,6 +12,7 @@ pytest = "*"
 mock = "*"
 pytest-testdox = "*"
 pytest-ordering = "*"
+mock-alchemy = "*"
 
 [requires]
 python_version = "3.10"

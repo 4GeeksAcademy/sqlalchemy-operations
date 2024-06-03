@@ -1,53 +1,58 @@
-from sqlalchemy.orm import Session
-from models import engine,User
+from models import db,People
+class Database_Operations:
+  db=None
+  def __init__(self, session):
+    self.db=session
 
-def people_create():
-  with Session(engine) as session:
-    session.begin()
+  def people_create(self,name):
+    user=People(name=name)
     try:
-      user=User(id=1)
-      session.add(user)
-    except:
-      session.rollback()
+      self.db.add(user)
+    except Exception as e:
+      self.db.rollback()
+      print(f"Error occurred: {e}")
+      return None
     else:
-      session.commit()
-  return None
-def people_get():
-  return None
-def people_list():
-  return None
-def people_edit():
-  return None
-def people_delete():
-  return None
+      self.db.commit()
+      print("People created")
+      return user
 
-def planet_create():
-  return None
-def planet_get():
-  return None
-def planet_list():
-  return None
-def planet_edit():
-  return None
-def planet_delete():
-  return None
+  def people_get(self):
+    return None
+  def people_list(self):
+    return None
+  def people_edit(self):
+    return None
+  def people_delete(self):
+    return None
 
-def film_create():
-  return None
-def film_get():
-  return None
-def film_list():
-  return None
-def film_edit():
-  return None
-def film_delete():
-  return None
+  def planet_create(self):
+    return None
+  def planet_get(self):
+    return None
+  def planet_list(self):
+    return None
+  def planet_edit(self):
+    return None
+  def planet_delete(self):
+    return None
 
-def people_get_homeworld():
-  return None
-def planet_residents():
-  return None
-def film_locations():
-  return None
-def film_characters():
-  return None
+  def film_create(self):
+    return None
+  def film_get(self):
+    return None
+  def film_list(self):
+    return None
+  def film_edit(self):
+    return None
+  def film_delete(self):
+    return None
+
+  def people_get_homeworld(self):
+    return None
+  def planet_residents(self):
+    return None
+  def film_locations(self):
+    return None
+  def film_characters(self):
+    return None
