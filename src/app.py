@@ -1,58 +1,27 @@
-"""
-This module takes care of starting the API Server, Loading the DB and Adding the endpoints
-"""
-import os
 from sqlalchemy import create_engine
+from models import db
+from db_operations import Database_Operations
 
-""" 
-from flask import Flask, request, jsonify, url_for
-from flask_cors import CORS
-from utils import APIException, generate_sitemap
-from datastructures import FamilyStructure
-#from models import Person
+ops=Database_Operations(db)
 
-app = Flask(__name__)
-app.url_map.strict_slashes = False
-CORS(app) """
-db_url = os.getenv("DATABASE_URL")
-if db_url is not None:
-    db_url = db_url.replace("postgres://", "postgresql://")
-else:
-    db_url = "sqlite:////tmp/test.db"
-    
-engine = create_engine(db_url, echo=True)
+#ops.planet_create(name="Tatooine",diameter="10465",gravity="1",population="120000")
+#alderaan=ops.planet_create(name="Aldera",diameter="12500",gravity="1 standard",population="2000000000")
+earth=ops.planet_create(name="Earth",diameter="12742",gravity="1 standard",population="8100000000")
 
+# Fix alderan Typo
+alderaan=ops.planet_edit(id=19, name="Alderaan")
 
-""" 
+# List all planets
+planets=ops.planet_list()
+if(planets is not None):
+  # you can choose to serialize the entire object instead of just mapping the name
+  #mapped_planets = list(map(lambda x: x.serialize(), planets))
+  mapped_planets = list(map(lambda x: x.name, planets))
+  print(mapped_planets)
 
-# create the jackson family object
-jackson_family = FamilyStructure("Jackson")
+#Delete planet earth witch is not on Star Wars
+if(ops.planet_delete(planet=earth)): print("Planet earth deleted")
 
-# Handle/serialize errors like a JSON object
-@app.errorhandler(APIException)
-def handle_invalid_usage(error):
-    return jsonify(error.to_dict()), error.status_code
-
-# generate sitemap with all your endpoints
-@app.route('/')
-def sitemap():
-    return generate_sitemap(app)
-
-@app.route('/members', methods=['GET'])
-def handle_hello():
-
-    # this is how you can use the Family datastructure by calling its methods
-    members = jackson_family.get_all_members()
-    response_body = {
-        "hello": "world",
-        "family": members
-    }
-
-
-    return jsonify(response_body), 200
-
-# this only runs if `$ python src/app.py` is executed
-if __name__ == '__main__':
-    PORT = int(os.environ.get('PORT', 3000))
-    app.run(host='0.0.0.0', port=PORT, debug=True)
- """
+# Look for a planet by specific id
+first_planet=ops.planet_get(id=1)
+print(first_planet.serialize())
