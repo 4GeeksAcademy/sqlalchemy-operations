@@ -72,8 +72,9 @@ class Character(Base):
             "id": self.id
         }
 
-
+#--------------------------------------------------------------------
 # Don't edit the lines bellow here - No edite la lineas abajo de aquí
+#--------------------------------------------------------------------
 db_url = os.getenv("DATABASE_URL")
 if db_url is not None:
     db_url = db_url.replace("postgres://", "postgresql://")
@@ -81,6 +82,7 @@ else:
     db_url = "sqlite:////tmp/test.db"
 
 
+# You can add 'echo=True' as param to the next line and see the sql under the hood
 # You can add 'echo=True' as param to the next line and see the sql under the hood
 engine = create_engine(db_url)
 
