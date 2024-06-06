@@ -21,7 +21,6 @@ class Films(Base):
             "id": self.id
         }
 
-
 class Planets(Base):
     __tablename__ = "planets"
     id: Mapped[int] = mapped_column(primary_key=True)
