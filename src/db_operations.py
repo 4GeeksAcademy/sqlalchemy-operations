@@ -1,53 +1,84 @@
-from sqlalchemy.orm import Session
-from models import engine,User
+from sqlalchemy import select, Column
+from models import People, Planets, Films, Locations,Character
 
-def people_create():
-  with Session(engine) as session:
-    session.begin()
-    try:
-      user=User(id=1)
-      session.add(user)
-    except:
-      session.rollback()
-    else:
-      session.commit()
-  return None
-def people_get():
-  return None
-def people_list():
-  return None
-def people_edit():
-  return None
-def people_delete():
-  return None
 
-def planet_create():
-  return None
-def planet_get():
-  return None
-def planet_list():
-  return None
-def planet_edit():
-  return None
-def planet_delete():
-  return None
+class Database_Operations:
+    # Constructor to initialize the object
+    def __init__(self, session):
+        self.session = session
 
-def film_create():
-  return None
-def film_get():
-  return None
-def film_list():
-  return None
-def film_edit():
-  return None
-def film_delete():
-  return None
+    #####################
+    # Planets operations
+    #####################
+    def planet_create(self):
+       return None
 
-def people_get_homeworld():
-  return None
-def planet_residents():
-  return None
-def film_locations():
-  return None
-def film_characters():
-  return None
+    def planet_get(self):
+        return None
+
+    def planet_find_by_name(self):
+      return None
+
+    def planet_list(self):
+        return None
+
+    def planet_edit(self):
+        return None
+
+    def planet_delete(self):
+        return None
+
+    ###################
+    # Films operations
+    ###################
+    def film_create(self):
+        return None
+
+    def film_get(self):
+        return None
+        
+    def film_get_episode(self):
+      return None
+
+    def film_list(self):
+        return None
+
+    def film_edit(self):
+        return None
+
+    def film_delete(self):
+        return None
+
+    ###################
+    # People operations
+    ###################
+    def people_create(self):
+        return None
+
+    def people_get(self):
+        return None
+
+    def people_list(self):
+        return None
+
+    def people_edit(self):
+        return None
+
+    def people_delete(self):
+        return None
+
+    ##############################
+    # Operations with relationships
+    ##############################
+
+    def film_add_locations(self):
+       return None
+
+    def film_add_characters(self):
+        return None
+    
+    def film_remove_locations(self):
+        return None
+
+    def film_remove_characters(self):
+        return None
