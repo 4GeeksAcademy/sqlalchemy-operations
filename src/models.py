@@ -13,10 +13,12 @@ class Films(Base):
     __tablename__ = "films"
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column(String(100))
-    episode_id: Mapped[int] = mapped_column(Integer)
+    episode_id: Mapped[int] = mapped_column(Integer, unique=True)
     director: Mapped[str] = mapped_column(String(100))
     producer: Mapped[str] = mapped_column(String(100))
     release_date: Mapped[date] = mapped_column(Date)
+    locations: Mapped[List["Locations"]] = relationship(back_populates="film")
+    charaters: Mapped[List["Character"]] = relationship(back_populates="film")
 
     def __repr__(self):
         return "<Films %r>" % self.id
@@ -31,6 +33,7 @@ class Films(Base):
             "release_date": self.release_date
         }
 
+
 class Planets(Base):
     __tablename__ = "planets"
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -38,10 +41,12 @@ class Planets(Base):
     diameter: Mapped[str] = mapped_column(String(50))
     gravity: Mapped[str] = mapped_column(String(50))
     population: Mapped[str] = mapped_column(String(50))
-    residents:Mapped[List["People"]]=relationship(back_populates="homeworld")
+    residents: Mapped[List["People"]] = relationship(
+        back_populates="homeworld")
+    movies: Mapped[List["Locations"]] = relationship(back_populates="planet")
 
     def __repr__(self):
-        return "<Planets %r>" % self.id
+        return "<Planets {}: {}>".format(self.id, self.name)
 
     def serialize(self):
         return {
@@ -52,6 +57,7 @@ class Planets(Base):
             "population": self.population
         }
 
+
 class People(Base):
     __tablename__ = "people"
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -60,11 +66,12 @@ class People(Base):
     mass: Mapped[int] = mapped_column(Integer)
     birth_year: Mapped[str] = mapped_column(String(50))
     gender: Mapped[str] = mapped_column(String(50))
-    homeworld_id = mapped_column(ForeignKey("planets.id"))
-    homeworld:Mapped["Planets"]=relationship(back_populates="residents")
+    homeworld_id = mapped_column(ForeignKey("planets.id"), nullable=True)
+    homeworld: Mapped["Planets"] = relationship(back_populates="residents")
+    movies: Mapped[List["Character"]] = relationship(back_populates="people")
 
     def __repr__(self):
-        return "<People %r>" % self.id
+        return "<People {}: {}>".format(self.id, self.name)
 
     def serialize(self):
         return {
@@ -77,30 +84,36 @@ class People(Base):
             "homeworld": self.homeworld
         }
 
+
 class Locations(Base):
     __tablename__ = "locations"
     id: Mapped[int] = mapped_column(primary_key=True)
-    planetId = mapped_column(ForeignKey("planets.id"))
-    filmId = mapped_column(ForeignKey("films.id"))
+    planet_id = mapped_column(ForeignKey("planets.id"))
+    planet: Mapped["Planets"] = relationship(back_populates="movies")
+    film_id = mapped_column(ForeignKey("films.id"))
+    film: Mapped["Films"] = relationship(back_populates="locations")
 
     def __repr__(self):
-        return "<Locations %r>" % self.id
+        return "<Location of {}: Planet: {}>".format(self.film.title, self.planet.name)
 
     def serialize(self):
         return {
             "id": self.id,
-            "planetId": self.planetId,
-            "filmId": self.filmId
+            "planet": self.planet.name,
+            "film": self.film.title
         }
 
-class Cast(Base):
-    __tablename__ = "cast"
+
+class Character(Base):
+    __tablename__ = "charaters"
     id: Mapped[int] = mapped_column(primary_key=True)
-    people = mapped_column(ForeignKey("people.id"))
-    film = mapped_column(ForeignKey("films.id"))
+    people_id = mapped_column(ForeignKey("people.id"))
+    people: Mapped["People"] = relationship(back_populates="movies")
+    film_id = mapped_column(ForeignKey("films.id"))
+    film: Mapped["Films"] = relationship(back_populates="charaters")
 
     def __repr__(self):
-        return "<Cast %r>" % self.id
+        return "<Character of {}: {}>".format( self.film.title, self.people.name)
 
     def serialize(self):
         return {
