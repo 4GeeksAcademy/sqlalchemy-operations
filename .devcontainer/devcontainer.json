@@ -13,7 +13,11 @@
 					"*.md": "vscode.markdown.preview.editor"
 				}
 			},
-			"extensions": [ "esbenp.prettier-vscode", "MS-vsliveshare.vsliveshare" ]
+			"extensions": [
+				"esbenp.prettier-vscode",
+				"MS-vsliveshare.vsliveshare",
+				"cweijan.vscode-postgresql-client2"
+			]
 		}
 	},
 
