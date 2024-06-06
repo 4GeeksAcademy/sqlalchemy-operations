@@ -1,8 +1,8 @@
 <!--hide-->
-# API Estática Familiar
+# Base de datos de Star Wars
 <!--endhide-->
 
-¡La familia "Jackson" necesita una API estática! Necesitamos construir las *estructuras de datos (data structures)* y crear un API endpoint para interactuar con él utilizando [Hoppscotch](https://hoppscotch.io/) (recomendado) o Postman.
+El universo de Star Wars necesita una base de datos para almacenar la información de todos los planetas y sus habitantes, asi como tambien los datos de las peliculas, los personajes que las integran y los planetas donde transcurren... La fuerza es intensa en este proyecto!
 
 ## 🌱 Cómo comenzar este proyecto
 
@@ -13,7 +13,7 @@ Recomendamos abrir este mismo repositorio usando un entorno de desarrollo como [
 Este es el repositorio que necesitas abrir:
 
 ```txt
-https://github.com/breatheco-de/exercise-family-static-api
+https://github.com/4GeeksAcademy/sqlalchemy-operations
 ```
 
 ## 💻 Instalación
@@ -22,15 +22,21 @@ https://github.com/breatheco-de/exercise-family-static-api
 
 2. Entra dentro del *virtual environment* `$ pipenv shell`
 
-3. Inicia el servidor flask `$ pipenv run start`
+## 🌐 Migración de tu base de datos
 
-## ✅ Autoevaluación
+1. Ejecuta el comando `pipenv run db_update` para generar una nueva migración.
 
-+ Evalúa tu código con el comando `$ pipenv run test`
+2. Ejecuta el comando `pipenv run db_upgrade` para migración aplicar las migraciones a tu base de datos.
+
+<!-- ## ✅ Autoevaluación
+
++ Evalúa tu código con el comando `$ pipenv run test` -->
 
 ## 📝 Instrucciones
 
-1. Crea el código necesario para desarrollar los API endpoints descritos más adelante.
+### En el archivo `models.py`
+
+1. Crea el código representar el modelo de la base
 
 2. Los únicos dos archivos que tienes que editar son:
 
