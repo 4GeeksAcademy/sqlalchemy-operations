@@ -1,7 +1,8 @@
 <!--hide-->
-# Base de datos de Star Wars
+# Operaciones con SQL Alchemy
 <!--endhide-->
 
+## Base de datos de Star Wars
 El universo de Star Wars necesita una base de datos para almacenar la información de todos los planetas y sus habitantes, asi como tambien los datos de las peliculas, los personajes que las integran y los planetas donde transcurren... La fuerza es intensa en este proyecto!
 
 ## 🌱 Cómo comenzar este proyecto
@@ -24,9 +25,9 @@ https://github.com/4GeeksAcademy/sqlalchemy-operations
 
 ## 🌐 Migración de tu base de datos
 
-1. Ejecuta el comando `pipenv run db_update` para generar una nueva migración.
+1. Ejecuta el comando `pipenv run migrate` para generar una nueva migración.
 
-2. Ejecuta el comando `pipenv run db_upgrade` para migración aplicar las migraciones a tu base de datos.
+2. Ejecuta el comando `pipenv run upgrade` para migración aplicar las migraciones a tu base de datos.
 
 > Es necesario seguir estos pasos la primera vez que inicias tu repo y de luego cada vez que hagas cambios a la estructura del modelo
 
@@ -38,23 +39,23 @@ https://github.com/4GeeksAcademy/sqlalchemy-operations
 
 ### En el archivo `models.py`
 
-1. Crea el código crear en la base de datos, el modelo que se presenta en la imagen:
+1. Utiliza python para representar en SQLAlchemy el modelo que se muestra en la imagen:
 
 ![Modelo de base de datos de Star Wars](https://raw.githubusercontent.com/4GeeksAcademy/sqlalchemy-operations/master/docs/assets/model.png)
 
-2. Las tablas deben tener los mismos datos que se reflejan en el modelo
+2. Las tablas deben tener los mismos atributos o columnas que se reflejan en el modelo
 
 3. Debes implementar las llaves foráneas en los casos en que haya relaciones.
 
 4. Implementa el uso de propiedades de tipo `relationship` para acceder a los datos que estén relacionados.
 
-5. (Opcional) Puedes escribir funciones para seralizar los objetos de SQLAlchemy en diccionarios; asi como tambien una funcion `__repr__` para especificar como aparecerán los objetos mostrados en consola. Esto puede ayudarte a facilitar la experiencia de desarrollo del proyecto.
+5. Para cada modelo escribe una funcion `__repr__` para especificar como se **representan** los objetos mostrados en consola. Esto te ayuda a mejorar la experiencia de desarrollo del proyecto.
 
 Solo edita las clases para completar los columnas y las relaciones que se reflejan en el modelo
 
 ### En el archivo `db_operations.py`
 
-En este archivo encontrarás las operaciones que deben realizarse para manejar la informacíon en la base de datos
+En este archivo encontrarás las operaciones que deben realizarse para administrar la informacíon en la base de datos, usualmente se desarrollan los métodos CRUD(**C**reate, **R**ead, **U**pdate,**D**elete), junto con otros que respondan a los requerimientos del proyecto.
 
 1. Escribe el código que realice la tarea que indica el nombre de la funcion, estas son:
 
@@ -86,9 +87,17 @@ def film_remove_locations(): # Eliminar un registro dado el id de la pelicula y 
 def film_remove_characters(): # Eliminar un registro dado el id de la pelicula y el id de la persona
 ```
 
+#### ¿Cómo satisfacer las pruebas unitarias?
+
+Este proyecto incluye pruebas unitarias para validar si las operaciones cumplen con los requisitos planteados, similar a como sería en un entorno de desarrollo orientado a pruebas (TDD). Para satisfacer las pruebas importante apegarse a  los de nombres de variables y tipos de datos de entrada, asi como tambien el tipo de dato de salida.
+
+- [] ¿Todos los atributos de tus modelos son exactamente iguales a como se muestran en la foto? Por ejemplo: Si en la foto aparece `homeworld_id` en el modelo `People`, relacionado con el `id` del modelo `Planets`, asi mismo de representarse en las clases de SQLAlchemy utilizando los mismos nombres, respetando el uso de las mayúsculas.
+
+- [] Los funciones `create` dentro del archivo `db_operations.py`
+
 ### En el archivo `app.py`
 
-En este archivo puedes hacer uso de las operaciones a medida que las vayas desarrollando para observar como funcionan y asegurarte que cumplan con los requisitos. Se recomienda utilizar la consola como salida para con el comando `print()` para mostrar informacion en la terminal, parecido a como funciona `console.log()` en javascript.
+En este archivo puedes hacer uso de las operaciones a medida que las vayas desarrollando para observar como funcionan y asegurarte que cumplan con los requisitos. Se recomienda utilizar la consola como salida con el comando `print()` para mostrar informacion en la terminal, parecido a como funciona `console.log()` en javascript.
 
 > Recuerda que puedes ejecutar el codigo de este archivo con el comando `pipenv run start`
 
