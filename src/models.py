@@ -21,7 +21,7 @@ class Films(Base):
     charaters: Mapped[List["Character"]] = relationship(back_populates="film")
 
     def __repr__(self):
-        return "<Films %r>" % self.id
+        return "<Film {}: {}>".format(self.id, self.title)
 
     def serialize(self):
         return {

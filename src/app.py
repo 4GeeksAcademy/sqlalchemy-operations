@@ -26,8 +26,6 @@ alderaan = ops.planet_edit(id=alderaan.id, name="Alderaan")
 # List all planets
 planets = ops.planet_list()
 if (planets is not None):
-    # you can choose to serialize the entire object instead of just mapping the name
-    # mapped_planets = list(map(lambda x: x.serialize(), planets))
     mapped_planets = list(map(lambda x: x.name, planets))
     print("List of planets:")
     print(mapped_planets)
