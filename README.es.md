@@ -91,9 +91,8 @@ def film_remove_characters(): # Eliminar un registro dado el id de la pelicula y
 
 Este proyecto incluye pruebas unitarias para validar si las operaciones cumplen con los requisitos planteados, similar a como sería en un entorno de desarrollo orientado a pruebas (TDD). Para satisfacer las pruebas importante apegarse a  los de nombres de variables y tipos de datos de entrada, asi como tambien el tipo de dato de salida.
 
-- [] ¿Todos los atributos de tus modelos son exactamente iguales a como se muestran en la foto? Por ejemplo: Si en la foto aparece `homeworld_id` en el modelo `People`, relacionado con el `id` del modelo `Planets`, asi mismo de representarse en las clases de SQLAlchemy utilizando los mismos nombres, respetando el uso de las mayúsculas.
+¿Todos los atributos de tus modelos son exactamente iguales a como se muestran en la foto? Por ejemplo: Si en la foto aparece `homeworld_id` en el modelo `People`, relacionado con el `id` del modelo `Planets`, asi mismo de representarse en las clases de SQLAlchemy utilizando los mismos nombres, respetando el uso de las mayúsculas.
 
-- [] Los funciones `create` dentro del archivo `db_operations.py`
 
 ### En el archivo `app.py`
 
