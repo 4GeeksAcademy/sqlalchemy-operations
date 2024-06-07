@@ -23,17 +23,6 @@ class Films(Base):
     def __repr__(self):
         return "<Film {}: {}>".format(self.id, self.title)
 
-    def serialize(self):
-        return {
-            "id": self.id,
-            "title": self.title,
-            "episode_id": self.episode_id,
-            "director": self.director,
-            "producer": self.producer,
-            "release_date": self.release_date
-        }
-
-
 class Planets(Base):
     __tablename__ = "planets"
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -47,17 +36,7 @@ class Planets(Base):
 
     def __repr__(self):
         return "<Planets {}: {}>".format(self.id, self.name)
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "diameter": self.diameter,
-            "gravity": self.gravity,
-            "population": self.population
-        }
-
-
+ 
 class People(Base):
     __tablename__ = "people"
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -73,18 +52,6 @@ class People(Base):
     def __repr__(self):
         return "<People {}: {}>".format(self.id, self.name)
 
-    def serialize(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "height": self.height,
-            "mass": self.mass,
-            "birth_year": self.birth_year,
-            "gender": self.gender,
-            "homeworld": self.homeworld
-        }
-
-
 class Locations(Base):
     __tablename__ = "locations"
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -95,14 +62,6 @@ class Locations(Base):
 
     def __repr__(self):
         return "<Location of {}: Planet: {}>".format(self.film.title, self.planet.name)
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "planet": self.planet.name,
-            "film": self.film.title
-        }
-
 
 class Character(Base):
     __tablename__ = "charaters"
@@ -115,15 +74,10 @@ class Character(Base):
     def __repr__(self):
         return "<Character of {}: {}>".format( self.film.title, self.people.name)
 
-    def serialize(self):
-        return {
-            "id": self.id,
-            "people": self.people,
-            "film": self.film
-        }
 
-
+#--------------------------------------------------------------------
 # Don't edit the lines bellow here - No edite la lineas abajo de aquí
+#--------------------------------------------------------------------
 db_url = os.getenv("DATABASE_URL")
 if db_url is not None:
     db_url = db_url.replace("postgres://", "postgresql://")
@@ -131,6 +85,7 @@ else:
     db_url = "sqlite:////tmp/test.db"
 
 
+# You can add 'echo=True' as param to the next line and see the sql under the hood
 # You can add 'echo=True' as param to the next line and see the sql under the hood
 engine = create_engine(db_url)
 

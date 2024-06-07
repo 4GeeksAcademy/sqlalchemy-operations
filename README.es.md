@@ -1,8 +1,9 @@
 <!--hide-->
-# API Estática Familiar
+# Operaciones con SQL Alchemy
 <!--endhide-->
 
-¡La familia "Jackson" necesita una API estática! Necesitamos construir las *estructuras de datos (data structures)* y crear un API endpoint para interactuar con él utilizando [Hoppscotch](https://hoppscotch.io/) (recomendado) o Postman.
+## Base de datos de Star Wars
+El universo de Star Wars necesita una base de datos para almacenar la información de todos los planetas y sus habitantes, asi como tambien los datos de las peliculas, los personajes que las integran y los planetas donde transcurren... La fuerza es intensa en este proyecto!
 
 ## 🌱 Cómo comenzar este proyecto
 
@@ -13,7 +14,7 @@ Recomendamos abrir este mismo repositorio usando un entorno de desarrollo como [
 Este es el repositorio que necesitas abrir:
 
 ```txt
-https://github.com/breatheco-de/exercise-family-static-api
+https://github.com/4GeeksAcademy/sqlalchemy-operations
 ```
 
 ## 💻 Instalación
@@ -22,166 +23,95 @@ https://github.com/breatheco-de/exercise-family-static-api
 
 2. Entra dentro del *virtual environment* `$ pipenv shell`
 
-3. Inicia el servidor flask `$ pipenv run start`
+## 🌐 Migración de tu base de datos
 
-## ✅ Autoevaluación
+1. Ejecuta el comando `pipenv run migrate` para generar una nueva migración.
 
-+ Evalúa tu código con el comando `$ pipenv run test`
+2. Ejecuta el comando `pipenv run upgrade` para migración aplicar las migraciones a tu base de datos.
+
+> Es necesario seguir estos pasos la primera vez que inicias tu repo y de luego cada vez que hagas cambios a la estructura del modelo
+
+<!-- ## ✅ Autoevaluación
+
++ Evalúa tu código con el comando `$ pipenv run test` -->
 
 ## 📝 Instrucciones
 
-1. Crea el código necesario para desarrollar los API endpoints descritos más adelante.
+### En el archivo `models.py`
 
-2. Los únicos dos archivos que tienes que editar son:
+1. Utiliza python para representar en SQLAlchemy el modelo que se muestra en la imagen:
 
-- `src/datastructure.py`: Contiene la estructura de datos `FamilyStructure` que se encarga de manejar la familia.
-- `src/app.py`: Es el código de tu API, aquí debes agregar los endpoints (rutas) y la lógica de programación.
+![Modelo de base de datos de Star Wars](https://raw.githubusercontent.com/4GeeksAcademy/sqlalchemy-operations/master/docs/assets/model.png)
 
-3. Hemos preparado un conjunto de pruebas automatizadas que te darán una idea de si tu código es correcto, ejecuta las pruebas escribiendo `$ pipenv run test` en la línea de comandos (terminal o consola).
+2. Las tablas deben tener los mismos atributos o columnas que se reflejan en el modelo
 
-## Estructuras de datos (Data structures)
+3. Debes implementar las llaves foráneas en los casos en que haya relaciones.
 
-Cada **miembro** de la familia Jackson debe ser un diccionario, equivalente a [Objetos literales en JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects) - y tienen estos valores:
+4. Implementa el uso de propiedades de tipo `relationship` para acceder a los datos que estén relacionados.
+
+5. Para cada modelo escribe una funcion `__repr__` para especificar como se **representan** los objetos mostrados en consola. Esto te ayuda a mejorar la experiencia de desarrollo del proyecto.
+
+Solo edita las clases para completar los columnas y las relaciones que se reflejan en el modelo
+
+### En el archivo `db_operations.py`
+
+En este archivo encontrarás las operaciones que deben realizarse para administrar la informacíon en la base de datos, usualmente se desarrollan los métodos CRUD(**C**reate, **R**ead, **U**pdate,**D**elete), junto con otros que respondan a los requerimientos del proyecto.
+
+1. Escribe el código que realice la tarea que indica el nombre de la funcion, estas son:
 
 ```python
-+ id: Int
-+ first_name: String
-+ last_name: String (Siempre Jackson)
-+ age: Int > 0
-+ lucky_numbers: List of integers
+# Planetas
+def planet_create(): # Crear
+def planet_get(): # Buscar por llave primaria
+def planet_find_by_name(): # Buscar por nombre
+def planet_list(): # Traer lista
+def planet_edit(): # Editar los datos especificando por el id
+def planet_delete(): # Eliminar especificando por el id
+# Peliculas
+def film_create(): # Crear
+def film_get(): # Buscar por llave primaria
+def film_get_episode(): # Buscar por numero de episodio
+def film_list(): # Traer lista
+def film_edit(): # Editar los datos especificando por el id
+def film_delete(): # Eliminar especificando por el id
+# Personas
+def people_create(): # Crear
+def people_get(): # Buscar por llave primaria
+def people_list():# Traer lista
+def people_edit(): # Editar los datos especificando por el id
+def people_delete(): # Eliminar especificando por el id
+# Operaciones con relaciones
+def film_add_locations(): # Agregar un registro dado el id de la pelicula y el id del planeta
+def film_add_characters():# Agregar un registro dado el id de la pelicula y el id de la persona
+def film_remove_locations(): # Eliminar un registro dado el id de la pelicula y el id del planeta
+def film_remove_characters(): # Eliminar un registro dado el id de la pelicula y el id de la persona
 ```
 
-La estructura de datos **family** será una clase con la siguiente estructura:
+#### ¿Cómo satisfacer las pruebas unitarias?
 
-```python
-class FamilyStructure:
-    def __init__(self, last_name):
-        self.last_name = last_name
-        self._next_id = 1
-        self._members = []
+Este proyecto incluye pruebas unitarias para validar si las operaciones cumplen con los requisitos planteados, similar a como sería en un entorno de desarrollo orientado a pruebas (TDD). Para satisfacer las pruebas importante apegarse a  los de nombres de variables y tipos de datos de entrada, asi como tambien el tipo de dato de salida.
 
-    # Este método genera un 'id' único al agregar miembros a la lista (no debes modificar esta función)
-    def _generate_id(self):
-        generated_id = self._next_id
-        self._next_id += 1
-        return generated_id
-
-    def add_member(self, member):
-        ## Debes implementar este método
-        ## Agrega un nuevo miembro a la lista de _members
-        pass
-
-    def delete_member(self, id):
-        ## Debes implementar este método
-        ## Recorre la lista y elimina el miembro con el id proporcionado
-        pass
-
-    def get_member(self, id):
-        ## Debes implementar este método
-        ## Recorre la lista y obtén el miembro con el id proporcionado
-        pass
-
-    def get_all_members(self, id):
-        return self._members
-```
-
-Nota: no olvides inicializar la clase: `jackson_family = FamilyStructure('Jackson')` *antes* de las rutas.
-
-## Estos son los miembros iniciales de la familia.
-
-```md
-John Jackson
-33 Years old
-Lucky Numbers: 7, 13, 22
-
-Jane Jackson
-35 Years old
-Lucky Numbers: 10, 14, 3
-
-Jimmy Jackson
-5 Years old
-Lucky Numbers: 1
-```
-
-## Endpoints
-
-Esta API debe tener 4 endpoints, todos devuelven JSON:
-
-### 1) Obtén todos los miembros de la familia:
-
-Devuelve todos los miembros de la familia.
-
-```md
-GET /members
-
-status_code 200 si se realizó con éxito, 400 si hubo un error por parte del cliente, 500 si el servidor encuentra un error
-
-RESPONSE BODY (content-type: application/json):
-
-[]  <!--- Lista de miembros de la familia -->
-```
-
-### 2) Recupera solo un miembro
-
-Devuelve el miembro de la familia para el cual `id == member_id`.
-
-```md
-GET /member/<int:member_id>
-
-RESPONSE (content_type: application/json):
-
-status_code 200 si se realizó con éxito, 400 si hubo un error por parte del cliente, 500 si el servidor encuentra un error
-
-body:  <!--- el objeto json del miembro de la familia --> 
-{
-    "id": Int,
-    "first_name": String,
-    "age": Int,
-    "lucky_numbers": List
-}
-```
-
-### 3) Añadir (POST) un miembro
-
-Agrega un nuevo miembro a la estructura de datos de la familia.
-
-```md
-POST /member
-
-REQUEST BODY (content_type: application/json):
-{
-    id: Int,
-    first_name: String,
-    age: Int,
-    lucky_numbers: []
-}
-
-RESPONSE (content_type: application/json):
-
-status_code 200 si se realizó con éxito, 400 si hubo un error por parte del cliente, 500 si el servidor encuentra un error
-```
+¿Todos los atributos de tus modelos son exactamente iguales a como se muestran en la foto? Por ejemplo: Si en la foto aparece `homeworld_id` en el modelo `People`, relacionado con el `id` del modelo `Planets`, asi mismo de representarse en las clases de SQLAlchemy utilizando los mismos nombres, respetando el uso de las mayúsculas.
 
 
-### 4) ELIMINA un miembro
+### En el archivo `app.py`
 
-Elimina el miembro de la familia para el cual `id == member_id`.
+En este archivo puedes hacer uso de las operaciones a medida que las vayas desarrollando para observar como funcionan y asegurarte que cumplan con los requisitos. Se recomienda utilizar la consola como salida con el comando `print()` para mostrar informacion en la terminal, parecido a como funciona `console.log()` en javascript.
 
-```md
-DELETE /member/<int:member_id>
+> Recuerda que puedes ejecutar el codigo de este archivo con el comando `pipenv run start`
 
-RESPONSE (content_type: application/json):
+<!-- hide -->
 
-status_code 200 si se realizó con éxito, 400 si hubo un error por parte del cliente, 500 si el servidor encuentra un error
+## Colaboradores
 
-body: {
-    done: True
-}
-```
+Gracias a estas personas maravillosas ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
-## Requisitos tecnológicos
+1. [Arnaldo Perez (arnaloperez)](https://github.com/arnaloperez) cotribución: (build-tutorial) ✅, (documentación) 📖
+  
+2. [Alejandro Sanchez (alesanchezr)](https://github.com/alesanchezr),  contribución: (detector bugs) 🐛
 
-- Todas las solicitudes y respuestas deben estar en content/type: application/json
-- Los códigos de respuesta deben ser `200` para solicitudes exitosas, `400` para una solicitud incorrecta o `404` para no encontrados.
-- Este ejercicio no incluye una base de datos, todo se debe hacer en durante el tiempo de ejecución del programa (memoria RAM).
 
-Este y otros proyectos son usados para [aprender a programar](https://4geeksacademy.com/es/aprender-a-programar/aprender-a-programar-desde-cero) por parte de los alumnos de 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) realizado por [Alejandro Sánchez](https://twitter.com/alesanchezr) y muchos otros contribuyentes. Conoce más sobre nuestros [Cursos de Programación](https://4geeksacademy.com/es/curso-de-programacion-desde-cero?lang=es) para convertirte en [Full Stack Developer](https://4geeksacademy.com/es/coding-bootcamps/desarrollador-full-stack/?lang=es), o nuestro [Data Science Bootcamp](https://4geeksacademy.com/es/coding-bootcamps/curso-datascience-machine-learning).
+Este proyecto sigue la especificación [all-contributors](https://github.com/kentcdodds/all-contributors). ¡Todas las contribuciones son bienvenidas!
+
+Este y otros ejercicios son usados para [aprender a programar](https://4geeksacademy.com/es/aprender-a-programar/aprender-a-programar-desde-cero) por parte de los alumnos de 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) realizado por [Alejandro Sánchez](https://twitter.com/alesanchezr) y muchos otros contribuyentes. Conoce más sobre nuestros [Cursos de Programación](https://4geeksacademy.com/es/curso-de-programacion-desde-cero?lang=es) para convertirte en [Full Stack Developer](https://4geeksacademy.com/es/coding-bootcamps/desarrollador-full-stack/?lang=es), o nuestro [Data Science Bootcamp](https://4geeksacademy.com/es/coding-bootcamps/curso-datascience-machine-learning).Tambien puedes adentrarte al mundo de ciberseguridad con nuestro [Bootcamp de ciberseguridad](https://4geeksacademy.com/es/coding-bootcamps/curso-ciberseguridad).
+<!-- endhide -->
