@@ -6,11 +6,12 @@ ops = Database_Operations(db)
 
 # Looking for a planet named "Tatooine"
 tatooine = ops.planet_find_by_name("Alderaan")
+# If it is not found add it
 if (tatooine is None):
-    # If it is not found add it
     tatooine = ops.planet_create(
         name="Tatooine", diameter="10465", gravity="1", population="120000")
 
+# Looking for a planet named "Alderaan"
 alderaan = ops.planet_find_by_name("Alderaan")
 if (alderaan is None):
     alderaan = ops.planet_create(
@@ -20,7 +21,7 @@ if (alderaan is None):
 earth = ops.planet_create(name="Earth", diameter="12742",
                           gravity="1 standard", population="8100000000")
 
-# Fix alderan name Typo
+# Fix Alderan name Typo
 alderaan = ops.planet_edit(id=alderaan.id, name="Alderaan")
 
 # List all planets
@@ -43,7 +44,7 @@ leia = ops.people_create(name="Leia Organa", height=150, mass=49,
 print("Alderaan residents:")
 print(alderaan.residents)
 
-# Now let's register Luke
+# Now let's register Luke and Anakin
 # But first we need to find tatooine in order to use it as homeworld
 tatooine = ops.planet_find_by_name(name="Tatooine")
 luke = ops.people_create(name="Luke Skywalker", height=172, mass=77,birth_year="19BBY", gender="male", homeworld_id=tatooine.id)
@@ -51,7 +52,7 @@ anakin = ops.people_create(name="Anakin Skywalker", height=188, mass=84,birth_ye
 print("Tatooine residents:")
 print(tatooine.residents)
 
-# Last let's look for the original trilogy
+# let's look for the original trilogy
 new_hope = ops.film_get_episode(episode_id=4)
 empire = ops.film_get_episode(episode_id=5)
 jedi = ops.film_get_episode(episode_id=6)
@@ -93,3 +94,5 @@ print(new_hope.charaters)
 ops.film_remove_characters(people_id=anakin.id, film_id=new_hope.id)
 print("Now these are the correct characters")
 print(new_hope.charaters)
+
+# Now we have a Star Wars database

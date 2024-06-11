@@ -22,6 +22,7 @@ class Database_Operations:
         except Exception as e:
             print(e)
             self.session.rollback()
+            return None
         else:
             self.session.commit()
             return new_planet
@@ -67,7 +68,7 @@ class Database_Operations:
             if (planet is None):
                 print("Planet not found")
                 return None
-
+            # Validate if the values are there to be updated
             if (name is not None):
                 planet.name = name
             if (diameter is not None):
@@ -116,6 +117,7 @@ class Database_Operations:
         except Exception as e:
             print(e)
             self.session.rollback()
+            return None
         else:
             self.session.commit()
             return new_film
@@ -159,7 +161,7 @@ class Database_Operations:
             query = select(Films).filter_by(id=id)
             film = self.session.scalars(query).first()
             if (film is None):
-                print("Planet not found")
+                print("Film not found")
                 return None
             if(title):
               film.title=title
@@ -212,6 +214,7 @@ class Database_Operations:
         except Exception as e:
             print(e)
             self.session.rollback()
+            return None
         else:
             self.session.commit()
             return people

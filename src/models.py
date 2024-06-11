@@ -18,7 +18,7 @@ class Films(Base):
     producer: Mapped[str] = mapped_column(String(100))
     release_date: Mapped[date] = mapped_column(Date)
     locations: Mapped[List["Locations"]] = relationship(back_populates="film")
-    charaters: Mapped[List["Character"]] = relationship(back_populates="film")
+    characters: Mapped[List["Character"]] = relationship(back_populates="film")
 
     def __repr__(self):
         return "<Film {}: {}>".format(self.id, self.title)
@@ -64,12 +64,12 @@ class Locations(Base):
         return "<Location of {}: Planet: {}>".format(self.film.title, self.planet.name)
 
 class Character(Base):
-    __tablename__ = "charaters"
+    __tablename__ = "characters"
     id: Mapped[int] = mapped_column(primary_key=True)
     people_id = mapped_column(ForeignKey("people.id"))
     people: Mapped["People"] = relationship(back_populates="movies")
     film_id = mapped_column(ForeignKey("films.id"))
-    film: Mapped["Films"] = relationship(back_populates="charaters")
+    film: Mapped["Films"] = relationship(back_populates="characters")
 
     def __repr__(self):
         return "<Character of {}: {}>".format( self.film.title, self.people.name)
