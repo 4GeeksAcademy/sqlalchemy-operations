@@ -1,17 +1,25 @@
 {
-	"title" : "Family Static API with Flask",
-	"slug" : "family-static-api",
-	"status": "published",
-	"translations": ["es", "us"],
-	"preview": "https://github.com/breatheco-de/exercise-family-static-api/blob/master/preview.png?raw=true",
-	"solution": "https://github.com/breatheco-de/exercise-family-static-api/tree/solution",
-	"difficulty": "beginner",
-	"technologies": ["flask", "python", "json", "serialization", "data-structures", "rest","api"],
-	"duration" : 8,
-	"description" : "Create an API to show family members",
-	"talents": [
-		{ "badge": "identator", "points": 10 }
-	],
-    "autoPlay": false,
-    "projectType": "project"
+  "title": {
+    "es":"Construye una base de datos de Star Wars con SQLAlchemy",
+    "en":"Build a Star Wars database with SQLAlchemy"
+  },
+  "slug": "star-wars-database-sqlalchemy",
+  "status": "published",
+  "translations": ["es", "en"],
+  "solution": "https://github.com/4GeeksAcademy/sqlalchemy-operations/tree/solution",
+  "difficulty": "intermediate",
+  "technologies": [
+    "python",
+    "json",
+    "postgresql",
+    "data-structures",
+    "sql",
+    "sqlalchemy"
+  ],
+  "duration": 8,
+  "description": {
+    "es": "Construye una base de datos de películas de Star Wars, creando modelos e implementando relaciones. Aprende a realizar operaciones CRUD con SQLAlchemy",
+    "en": "Build a database of Star Wars movies, creating models and implementing relationships. Learn how to perform CRUD operations with SQLAlchemy"
+  },
+  "projectType": "project"
 }
