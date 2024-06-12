@@ -12,12 +12,13 @@ pytest = "*"
 mock = "*"
 pytest-testdox = "*"
 pytest-ordering = "*"
+py-mon = "*"
 
 [requires]
 python_version = "3.10"
 
 [scripts]
-start="python src/app.py"
+start="pymon src/app.py"
 test="pytest --testdox --color=yes"
 init_migrations="alembic init ."
 db_test="alembic current"

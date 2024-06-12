@@ -1,5 +1,5 @@
 <!--hide-->
-# Operaciones con SQL Alchemy
+# Construye una base de datos de Star Wars con SQLAlchemy
 <!--endhide-->
 
 ## Base de datos de Star Wars
@@ -92,17 +92,19 @@ def film_remove_characters(): # Eliminar un registro dado el id de la pelicula y
 
 #### Tipos de dato de las entradas y las salidas
 
-Como parte del reto debes especificar los tipos de datos que van a recibir cada una de las funciones, asi como utilizar un tipo de dato como salida. Para ello debes tener en consideración los siguientes aspectos
+Como parte del reto debes especificar los tipos de datos que van a recibir cada una de las funciones, asi como utilizar un tipo de dato específico como salida. Para ello debes tener en consideración los siguientes aspectos
 
 - Las funciones `create` deben recibir todos los datos que necesite la tabla, excepto el id que se genera automáticamente. Estas funciones deben retornar el objeto creado.
 
 - Las funciones `get` o ` find` deben retornar una sola entidad. Puede ser el primer resultado que coincida con la búsqueda.
 
-- Las funciones `edit` tambien reciben todos los datos de la entidad como parámetro, siendo el `id` obligatorio y el resto opcionales de manera que solo se modifiquen los datos especificados y el resto se preserve como está. Estas funciones tambien deben retornar el objeto editado.
+- Las funciones `edit` tambien reciben todos los datos de la entidad como parámetros, siendo el `id` obligatorio y el resto opcionales de manera que solo se modifiquen los datos especificados y el resto se preserve como está. Estas funciones tambien deben retornar el objeto editado.
 
 - Las funciones `delete` deben retornar `True` si la eliminación se realizó con exito
 
-- Las funciones de las tablas transitorias `locations` y `characters` hacen todas las operaciones con las llaves foráneas (foreign keys) por lo que solo necesitan el `id` de los elementos con los que se van a relacionar.
+- Las funciones de las tablas pivote `locations` y `characters` hacen todas las operaciones con las llaves foráneas (foreign keys) por lo que solo necesitan el `id` de los elementos con los que se van a relacionar.
+
+- Recuerda utilizar la convención [snake_case](https://es.wikipedia.org/wiki/Snake_case) para el nombre de las variables, por ejemplo: `people_id`.
 
 ### En el archivo `app.py`
 
@@ -123,10 +125,9 @@ Aquí hay unos desafíos adicionales para que profundices mas en el uso de SQLAl
 
 1. Implementa el uso de paginación utilizando `limit` y `offset` en las funciones `list`.
 
-2. Usa bloques `try / except` para hacer que tu código con maneje los errores sin romper la aplicación.
+2. Usa bloques `try / except` para hacer que tu código maneje los errores sin romper la aplicación.
 
-3. Implementa la eliminación en base a entidades en las funciones `detele`. Permite que se especifique si se desea eliminar en base al `id` o pasando el objeto.
-
+3. Implementa la eliminación en base a entidades en las funciones `delete`. Permite que se especifique si se desea eliminar en base al `id` o pasando el objeto.
 
 <!-- hide -->
 
