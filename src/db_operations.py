@@ -246,9 +246,9 @@ class Database_Operations:
     def people_edit(self,id,name,height,mass,birth_year,gender,homeworld_id):
         try:
           query = select(People).filter_by(id=id)
-          people = self.session.scalars(query).first()
+          people = self.session.scalar(query)
           if (people is None):
-              print("Planet not found")
+              print("People not found")
               return None
           if(name):
             people.name=name
@@ -262,6 +262,9 @@ class Database_Operations:
             people.gender=gender
           if(homeworld_id):
             people.homeworld_id=homeworld_id
+          self.session.add(people)
+          self.session.commit()
+          return people
         except Exception as e:
             print(e)
             self.session.rollback()
