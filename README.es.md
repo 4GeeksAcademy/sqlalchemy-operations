@@ -1,3 +1,9 @@
+---
+title: "Construye una base de datos de Star Wars con SQLAlchemy"
+subtitle: "Construye una base de datos de películas de Star Wars, creando modelos e implementando relaciones. Aprende a realizar operaciones CRUD con SQLAlchemy."
+tags: ["python","json","postgresql","data-structures","sql","sqlalchemy"]
+---
+
 <!--hide-->
 # Construye una base de datos de Star Wars con SQLAlchemy
 <!--endhide-->

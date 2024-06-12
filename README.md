@@ -1,15 +1,24 @@
+---
+title: "Build a Star Wars database with SQLAlchemy"
+subtitle: "Build a database of Star Wars movies, creating models and implementing relationships. Learn how to perform CRUD operations with SQLAlchemy."
+tags: ["python","json","postgresql","data-structures","sql","sqlalchemy"]
+---
+
 <!--hide-->
+
 # Build a Star Wars database with SQLAlchemy
+
 <!--endhide-->
 
 ## Star Wars Database
+
 The Star Wars universe needs a database to store the information of all the planets and their inhabitants, as well as the data of the movies, the characters that integrate them and the planets where they take place... The force is intense in this project!
 
 ## 🌱 How to start this project?
 
 This project comes with the necessary files to start working immediately.
 
-We recommend opening this same repository using a development environment such as [Codespaces](https://4geeks.com/lesson/what-is-github-codespaces) (recomended) or [Gitpod](https://4geeks.com/lesson/how-to-use-gitpod).  `git clone`.
+We recommend opening this same repository using a development environment such as [Codespaces](https://4geeks.com/lesson/what-is-github-codespaces) (recomended) or [Gitpod](https://4geeks.com/lesson/how-to-use-gitpod). `git clone`.
 
 This is the repository you need to open:
 
@@ -21,7 +30,7 @@ https://github.com/4GeeksAcademy/sqlalchemy-operations
 
 1. Install the project dependencies `$ pipenv install`.
 
-2. Enter inside the *virtual environment* `$ pipenv shell`.
+2. Enter inside the _virtual environment_ `$ pipenv shell`.
 
 ## 🌐 Migration of your database
 
@@ -33,7 +42,7 @@ https://github.com/4GeeksAcademy/sqlalchemy-operations
 
 ## ✅ Self-evaluation
 
-+ Evaluate your code with the command `pipenv run test`
+- Evaluate your code with the command `pipenv run test`
 
 ## 📝 Instructions
 
@@ -52,9 +61,7 @@ https://github.com/4GeeksAcademy/sqlalchemy-operations
 5. For each model write a `__repr__` function to specify how the objects displayed in the console are **represented**. This helps you to improve the development experience of the project.
 
 Just edit the classes to complete the columns and relationships that are reflected in the model.
-*** Translated with www.DeepL.com/Translator (free version) ***
-
-
+**_ Translated with www.DeepL.com/Translator (free version) _**
 
 ### On the `db_operations.py` file
 
@@ -114,7 +121,6 @@ In this file you can make use of the operations as you develop them to observe h
 
 > Remember that you can run the code in this file with the `pipenv run start` command.
 
-
 ## 🧪 How to satisfy unit tests?
 
 This project includes unit tests to validate if the operations meet the requirements, similar to how it would be in a Test Driven Development (TDD) environment. To satisfy the tests it is important to adhere to the variable names and input data types, as well as the output data type.
@@ -138,11 +144,11 @@ Here are some additional challenges for you to delve deeper into the use of SQLA
 Thanks to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 1. [Arnaldo Perez (arnaloperez)](https://github.com/arnaloperez) contribution: (build-tutorial) ✅, (documentation) 📖.
-  
-2. [Alejandro Sanchez (alesanchezr)](https://github.com/alesanchezr),  contribution: (bug detector) 🐛
 
+2. [Alejandro Sanchez (alesanchezr)](https://github.com/alesanchezr), contribution: (bug detector) 🐛
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. All contributions are welcome!
 
-This and many other exercises are built by students as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sánchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and  [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).You can alse deepdive in the world of cybersecurity with our [Cybersecurity Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/cybersecurity)
+This and many other exercises are built by students as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sánchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).You can alse deepdive in the world of cybersecurity with our [Cybersecurity Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/cybersecurity)
+
 <!-- endhide -->
