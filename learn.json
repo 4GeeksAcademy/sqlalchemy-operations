@@ -7,7 +7,7 @@
   "status": "published",
   "translations": ["es", "en"],
   "solution": "https://github.com/4GeeksAcademy/sqlalchemy-operations/tree/solution",
-  "difficulty": "intermediate",
+  "difficulty": "beginner",
   "technologies": [
     "python",
     "json",
