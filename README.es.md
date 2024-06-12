@@ -57,29 +57,32 @@ Solo edita las clases para completar los columnas y las relaciones que se reflej
 
 En este archivo encontrarás las operaciones que deben realizarse para administrar la informacíon en la base de datos, usualmente se desarrollan los métodos CRUD(**C**reate, **R**ead, **U**pdate,**D**elete), junto con otros que respondan a los requerimientos del proyecto.
 
-1. Escribe el código que realice la tarea que indica el nombre de la funcion, estas son:
+#### Escribe el código que realice la tarea que indica el nombre de la función
 
 ```python
 # Planetas
 def planet_create(): # Crear
-def planet_get(): # Buscar por llave primaria
-def planet_find_by_name(): # Buscar por nombre
-def planet_list(): # Traer lista
-def planet_edit(): # Editar los datos especificando por el id
-def planet_delete(): # Eliminar especificando por el id
+def planet_get(): # Buscar por id
+def planet_find_by_name(): # Busca uno por nombre
+def planet_list(): # Lista de todos los planetas
+def planet_edit(): # Editar los datos especificando el id
+def planet_delete(): # Eliminar especificando el id
+
 # Peliculas
 def film_create(): # Crear
-def film_get(): # Buscar por llave primaria
+def film_get(): # Buscar por id
 def film_get_episode(): # Buscar por numero de episodio
-def film_list(): # Traer lista
+def film_list(): # Lista de todas las películas
 def film_edit(): # Editar los datos especificando por el id
 def film_delete(): # Eliminar especificando por el id
+
 # Personas
 def people_create(): # Crear
-def people_get(): # Buscar por llave primaria
+def people_get(): # Buscar por id
 def people_list():# Traer lista
 def people_edit(): # Editar los datos especificando por el id
 def people_delete(): # Eliminar especificando por el id
+
 # Operaciones con relaciones
 def film_add_locations(): # Agregar un registro dado el id de la pelicula y el id del planeta
 def film_add_characters():# Agregar un registro dado el id de la pelicula y el id de la persona
@@ -87,12 +90,19 @@ def film_remove_locations(): # Eliminar un registro dado el id de la pelicula y 
 def film_remove_characters(): # Eliminar un registro dado el id de la pelicula y el id de la persona
 ```
 
-#### ¿Cómo satisfacer las pruebas unitarias?
+#### Tipos de dato de las entradas y las salidas
 
-Este proyecto incluye pruebas unitarias para validar si las operaciones cumplen con los requisitos planteados, similar a como sería en un entorno de desarrollo orientado a pruebas (TDD). Para satisfacer las pruebas importante apegarse a  los de nombres de variables y tipos de datos de entrada, asi como tambien el tipo de dato de salida.
+Como parte del reto debes especificar los tipos de datos que van a recibir cada una de las funciones, asi como utilizar un tipo de dato como salida. Para ello debes tener en consideración los siguientes aspectos
 
-¿Todos los atributos de tus modelos son exactamente iguales a como se muestran en la foto? Por ejemplo: Si en la foto aparece `homeworld_id` en el modelo `People`, relacionado con el `id` del modelo `Planets`, asi mismo de representarse en las clases de SQLAlchemy utilizando los mismos nombres, respetando el uso de las mayúsculas.
+- Las funciones `create` deben recibir todos los datos que necesite la tabla, excepto el id que se genera automáticamente. Estas funciones deben retornar el objeto creado.
 
+- Las funciones `get` o ` find` deben retornar una sola entidad. Puede ser el primer resultado que coincida con la búsqueda.
+
+- Las funciones `edit` tambien reciben todos los datos de la entidad como parámetro, siendo el `id` obligatorio y el resto opcionales de manera que solo se modifiquen los datos especificados y el resto se preserve como está. Estas funciones tambien deben retornar el objeto editado.
+
+- Las funciones `delete` deben retornar `True` si la eliminación se realizó con exito
+
+- Las funciones de las tablas transitorias `locations` y `characters` hacen todas las operaciones con las llaves foráneas (foreign keys) por lo que solo necesitan el `id` de los elementos con los que se van a relacionar.
 
 ### En el archivo `app.py`
 
@@ -100,9 +110,27 @@ En este archivo puedes hacer uso de las operaciones a medida que las vayas desar
 
 > Recuerda que puedes ejecutar el codigo de este archivo con el comando `pipenv run start`
 
+
+## 🧪 ¿Cómo satisfacer las pruebas unitarias?
+
+Este proyecto incluye pruebas unitarias para validar si las operaciones cumplen con los requisitos planteados, similar a como sería en un entorno de desarrollo orientado a pruebas (TDD). Para satisfacer las pruebas es importante apegarse a  los de nombres de variables y tipos de datos de entrada, asi como tambien el tipo de dato de salida.
+
+¿Todos los atributos de tus modelos son exactamente iguales a como se muestran en la foto? Por ejemplo: Si en la foto aparece `homeworld_id` en el modelo `People`, relacionado con el `id` del modelo `Planets`, asi mismo de representarse en las clases de SQLAlchemy utilizando los mismos nombres, respetando el uso de las mayúsculas.
+
+## 🔥 ¿Te sientes confiado?
+
+Aquí hay unos desafíos adicionales para que profundices mas en el uso de SQLAlchemy
+
+1. Implementa el uso de paginación utilizando `limit` y `offset` en las funciones `list`.
+
+2. Usa bloques `try / except` para hacer que tu código con maneje los errores sin romper la aplicación.
+
+3. Implementa la eliminación en base a entidades en las funciones `detele`. Permite que se especifique si se desea eliminar en base al `id` o pasando el objeto.
+
+
 <!-- hide -->
 
-## Colaboradores
+## 🫂 Colaboradores
 
 Gracias a estas personas maravillosas ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
