@@ -5,7 +5,7 @@
 ## Star Wars Database
 The Star Wars universe needs a database to store the information of all the planets and their inhabitants, as well as the data of the movies, the characters that integrate them and the planets where they take place... The force is intense in this project!
 
-## 🌱 Cómo comenzar este proyecto
+## 🌱 How to start this project?
 
 This project comes with the necessary files to start working immediately.
 

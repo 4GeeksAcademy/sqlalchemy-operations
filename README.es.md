@@ -5,7 +5,7 @@
 ## Base de datos de Star Wars
 El universo de Star Wars necesita una base de datos para almacenar la información de todos los planetas y sus habitantes, asi como tambien los datos de las peliculas, los personajes que las integran y los planetas donde transcurren... La fuerza es intensa en este proyecto!
 
-## 🌱 Cómo comenzar este proyecto
+## 🌱 ¿Cómo comenzar este proyecto?
 
 Este proyecto viene con los archivos necesarios para comenzar a trabajar de inmediato.
 
