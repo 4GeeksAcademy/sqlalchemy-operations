@@ -3,6 +3,7 @@
     "es":"Construye una base de datos de Star Wars con SQLAlchemy",
     "en":"Build a Star Wars database with SQLAlchemy"
   },
+  "preview": "https://storage.googleapis.com/screenshots-breathecode/af70cb41d38bf98ad04b80d129d91b1ede9ce232f57e7fabc8b6bef4c11bd707",
   "slug": "star-wars-database-sqlalchemy",
   "status": "published",
   "translations": ["es", "en"],
